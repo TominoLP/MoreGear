@@ -56,22 +56,6 @@ public class EnderrideSwordListener implements Listener {
         entityloc.getWorld().playSound(entityloc, Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 1, 5);
     }
 
-    @EventHandler(ignoreCancelled = true)
-    public void onPlayerItemHeld(PlayerItemHeldEvent event) {
-        main.getPlayersWithTool().remove(event.getPlayer());
-        ItemStack newItem = event.getPlayer().getInventory().getItem(event.getNewSlot());
-
-        if (newItem != null && newItem.getItemMeta() != null && newItem.getItemMeta().hasCustomModelData()
-                && newItem.getItemMeta().getCustomModelData() == 10015) {
-            event.getPlayer().sendMessage("sword lol" + main.getPlayersWithTool().size());
-            if (!main.charges.containsKey(event.getPlayer())) main.charges.put(event.getPlayer(), 100L);
-
-            main.getPlayersWithTool().add(event.getPlayer());
-            event.getPlayer().sendMessage("drineee" + main.getPlayersWithTool().size());
-        } else main.getPlayersWithTool().remove(event.getPlayer());
-    }
-
-
     @EventHandler()
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR)) {

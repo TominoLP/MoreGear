@@ -25,17 +25,6 @@ public class EnderrideHoeListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    public void onPlayerItemHeld(PlayerItemHeldEvent event) {
-        main.getPlayersWithTool().remove(event.getPlayer());
-        ItemStack newItem = event.getPlayer().getInventory().getItem(event.getNewSlot());
-        if (newItem != null && newItem.getItemMeta() != null && newItem.getItemMeta().hasCustomModelData()
-                && newItem.getItemMeta().getCustomModelData() == 10013) {
-            if (!main.charges.containsKey(event.getPlayer())) main.charges.put(event.getPlayer(), 100L);
-            main.getPlayersWithTool().add(event.getPlayer());
-        } else main.getPlayersWithTool().remove(event.getPlayer());
-    }
-
-    @EventHandler(ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 

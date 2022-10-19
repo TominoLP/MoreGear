@@ -20,27 +20,25 @@ public class EnderrideArmorListener implements Listener {
         this.main = main;
     }
 
-//    @EventHandler(ignoreCancelled = true)
-//    public void onPlayerArmorChange(PlayerArmorChangeEvent event) {
-//        Player player = event.getPlayer();
-//
-//        if ((event.getNewItem() != null && event.getNewItem().getItemMeta() != null &&
-//                event.getNewItem().getItemMeta().getDisplayName().contains("Enderride")) ||
-//                (event.getOldItem() != null && event.getOldItem().getItemMeta() != null &&
-//                        event.getOldItem().getItemMeta().getDisplayName().contains("Enderride"))) {
-//
-//            if (this.hasFullSet(player)) {
-//                player.setAllowFlight(true);
-//                main.getFillSetPlayers().add(player);
-//                return;
-//            }
-//
-//            player.setAllowFlight(false);
-//            player.setFlying(false);
-//            main.getFillSetPlayers().remove(player);
-//
-//        }
-//    }
+    @EventHandler(ignoreCancelled = true)
+    public void onPlayerArmorChange(PlayerArmorChangeEvent event) {
+        Player player = event.getPlayer();
+
+        if ((event.getNewItem() != null && event.getNewItem().getItemMeta() != null &&
+                event.getNewItem().getItemMeta().getDisplayName().contains("Enderride")) ||
+                (event.getOldItem() != null && event.getOldItem().getItemMeta() != null &&
+                        event.getOldItem().getItemMeta().getDisplayName().contains("Enderride"))) {
+
+            if (this.hasFullSet(player)) {
+                player.setAllowFlight(true);
+                main.getFillSetPlayers().add(player);
+                return;
+            }
+            player.setAllowFlight(false);
+            player.setFlying(false);
+            main.getFillSetPlayers().remove(player);
+        }
+    }
 
     @EventHandler(ignoreCancelled = true)
     public void onPlayerJoin(PlayerJoinEvent event) {
