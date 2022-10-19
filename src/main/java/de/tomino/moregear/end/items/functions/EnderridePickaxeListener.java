@@ -8,9 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
-
 
 public class EnderridePickaxeListener implements Listener {
 
@@ -25,7 +23,7 @@ public class EnderridePickaxeListener implements Listener {
         Block TargetBlock = event.getBlock();
         ItemStack drop = null;
         Player player = event.getPlayer();
-        double dropcount = 0L;
+        double dropCount = 0L;
 
         if (player.getInventory().getItemInMainHand().getItemMeta() != null
                 && player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()
@@ -43,7 +41,7 @@ public class EnderridePickaxeListener implements Listener {
                             for (int z = -1; z < 4; z++) {
                                 Block block = TargetBlock.getWorld().getBlockAt(TargetBlock.getX() + x, TargetBlock.getY() + y, TargetBlock.getZ() + z);
                                 if (block.getType().toString().contains("ORE")) {
-                                    dropcount = dropcount + block.getDrops().size();
+                                    dropCount = dropCount + block.getDrops().size();
                                     drop = (ItemStack) block.getDrops().toArray()[0];
                                     block.getDrops().clear();
                                     block.breakNaturally();
@@ -56,26 +54,26 @@ public class EnderridePickaxeListener implements Listener {
 
                 if (player.getInventory().getItemInMainHand().getEnchantments().containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
                     if (player.getInventory().getItemInMainHand().getEnchantments().get(Enchantment.LOOT_BONUS_BLOCKS) == 1) {
-                        dropcount = dropcount * 1.33;
-                        player.sendMessage(dropcount + ": " + drop);
+                        dropCount = dropCount * 1.33;
+                        player.sendMessage(dropCount + ": " + drop);
                         assert drop != null;
-                        drop.setAmount((int) dropcount);
+                        drop.setAmount((int) dropCount);
                         player.getInventory().addItem(drop);
                         return;
                     }
                     if (player.getInventory().getItemInMainHand().getEnchantments().get(Enchantment.LOOT_BONUS_BLOCKS) == 2) {
-                        dropcount = dropcount * 1.55;
-                        player.sendMessage(dropcount + ": " + drop);
+                        dropCount = dropCount * 1.55;
+                        player.sendMessage(dropCount + ": " + drop);
                         assert drop != null;
-                        drop.setAmount((int) dropcount);
+                        drop.setAmount((int) dropCount);
                         player.getInventory().addItem(drop);
                         return;
                     }
                     if (player.getInventory().getItemInMainHand().getEnchantments().get(Enchantment.LOOT_BONUS_BLOCKS) == 3) {
-                        dropcount = dropcount * 1.75;
-                        player.sendMessage(dropcount + ": " + drop);
+                        dropCount = dropCount * 1.75;
+                        player.sendMessage(dropCount + ": " + drop);
                         assert drop != null;
-                        drop.setAmount((int) dropcount);
+                        drop.setAmount((int) dropCount);
                         player.getInventory().addItem(drop);
                         return;
                     }
@@ -87,7 +85,7 @@ public class EnderridePickaxeListener implements Listener {
                     }
                 }
                 assert drop != null;
-                drop.setAmount((int) dropcount);
+                drop.setAmount((int) dropCount);
                 player.getInventory().addItem(drop);
 
             }

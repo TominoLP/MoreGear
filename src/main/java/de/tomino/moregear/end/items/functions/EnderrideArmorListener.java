@@ -49,7 +49,6 @@ public class EnderrideArmorListener implements Listener {
             main.getFillSetPlayers().add(player);
             return;
         }
-
         player.setAllowFlight(false);
         player.setFlying(false);
     }

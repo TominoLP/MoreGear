@@ -1,6 +1,5 @@
 package de.tomino.moregear.end.items;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -9,7 +8,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -74,7 +72,7 @@ public class Enderride {
         ItemMeta meta = EnderrideAxe.getItemMeta();
         assert meta != null;
         meta.setDisplayName("§5§lEnderride Axe");
-        meta.setLore(Arrays.asList(" ","§6§lAbility §e§lSneak:", "§7Tree Chopper cuts down the", "§7entire tree at once", "§7consumes 20 charges", " ", "§5§lEPIC AXE"));
+        meta.setLore(Arrays.asList(" ", "§6§lAbility §e§lSneak:", "§7Tree Chopper cuts down the", "§7entire tree at once", "§7consumes 20 charges", " ", "§5§lEPIC AXE"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10011);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -87,7 +85,7 @@ public class Enderride {
         ItemMeta meta = EnderrideShovel.getItemMeta();
         assert meta != null;
         meta.setDisplayName("§5§lEnderride Shovel");
-        meta.setLore(Arrays.asList(" ","§6§lAbility §e§lSneak:", "§7Grants you 2x Speed", "§7consumes 20 charges", " ", "§5§lEPIC SHOVEL"));
+        meta.setLore(Arrays.asList(" ", "§6§lAbility §e§lSneak:", "§7Grants you 2x Speed", "§7consumes 20 charges", " ", "§5§lEPIC SHOVEL"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10012);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -99,8 +97,9 @@ public class Enderride {
         ItemStack EnderrideHoe = new ItemStack(Material.NETHERITE_HOE);
         ItemMeta meta = EnderrideHoe.getItemMeta();
         assert meta != null;
-        meta.setDisplayName("§5§lEnderride Hoe");;
-        meta.setLore(Arrays.asList(" ","§6§lAbility §e§l:", "§7Cultivater", "§7replace a 3x3 area with farmland", "§7consumes 5 charges", " ", "§5§lEPIC HOE"));
+        meta.setDisplayName("§5§lEnderride Hoe");
+        ;
+        meta.setLore(Arrays.asList(" ", "§6§lAbility §e§l:", "§7Cultivater", "§7replace a 3x3 area with farmland", "§7consumes 5 charges", " ", "§5§lEPIC HOE"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10013);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -152,7 +151,7 @@ public class Enderride {
         AttributeModifier knockbackresistancemodifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", 0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackresistancemodifier);
         meta.setDisplayName("§5§lEnderride Helmet");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC HELMET"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC HELMET"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10001);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -173,7 +172,7 @@ public class Enderride {
         AttributeModifier knockbackresistancemodifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", 0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackresistancemodifier);
         meta.setDisplayName("§5§lEnderride Chestplate");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC CHESTPLATE"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC CHESTPLATE"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10002);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -194,7 +193,7 @@ public class Enderride {
         AttributeModifier knockbackresistancemodifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", 0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackresistancemodifier);
         meta.setDisplayName("§5§lEnderride Leggins");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC LEGGINS"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC LEGGINS"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10003);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -218,7 +217,7 @@ public class Enderride {
         AttributeModifier movementspeedmodifier = new AttributeModifier(UUID.randomUUID(), "generic.movement_speed", 0.1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
         meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, movementspeedmodifier);
         meta.setDisplayName("§5§lEnderride Boots");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC BOOTS"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC BOOTS"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10004);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -239,7 +238,7 @@ public class Enderride {
         AttributeModifier knockbackresistancemodifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", 0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackresistancemodifier);
         meta.setDisplayName("§5§lEnderride Elytra");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC ELYTRA"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC ELYTRA"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10005);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -260,7 +259,7 @@ public class Enderride {
         AttributeModifier knockbackresistancemodifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback_resistance", 0.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackresistancemodifier);
         meta.setDisplayName("§5§lEnderride Chestplate");
-        meta.setLore(Arrays.asList(" ","§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC CHESTPLATE"));
+        meta.setLore(Arrays.asList(" ", "§6§lFull Set Bonus:", " ", "§7Increases your Overall Stats", "§7Give you the ability to", "§7glide in the Void", " ", "§6EPIC CHESTPLATE"));
         meta.setUnbreakable(true);
         meta.setCustomModelData(10006);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);

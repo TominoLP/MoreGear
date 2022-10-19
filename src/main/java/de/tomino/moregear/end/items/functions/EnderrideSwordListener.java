@@ -12,9 +12,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 
 public class EnderrideSwordListener implements Listener {
@@ -30,30 +30,28 @@ public class EnderrideSwordListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player player) {
-            Location entityloc = event.getEntity().getLocation();
+            Location entityLoc = event.getEntity().getLocation();
             player.getInventory().getItemInMainHand();
-
             if (player.getInventory().getItemInMainHand().getItemMeta() != null
                     && player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()
                     && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 10015) {
                 if (player.getWorld().getEnvironment() == org.bukkit.World.Environment.THE_END
                         && main.getFillSetPlayers().contains(player)) {
                     event.setDamage(event.getDamage() * 2);
-                    player.getWorld().spawnParticle(Particle.CRIT, entityloc, 10);
-                    swordEffect(event, player, entityloc);
+                    player.getWorld().spawnParticle(Particle.CRIT, entityLoc, 10);
+                    swordEffect(entityLoc);
                     return;
                 }
-                swordEffect(event, player, entityloc);
+                swordEffect(entityLoc);
 
             }
         }
     }
 
-    protected void swordEffect(EntityDamageByEntityEvent event, Player player, Location entityloc) {
-        player.sendMessage(event.getFinalDamage() + "");
-        entityloc.getWorld().spawnParticle(Particle.SUSPENDED_DEPTH, entityloc, 2, 0.5, 0.5, 0.5, 0.0);
-        entityloc.getWorld().spawnParticle(Particle.SOUL, entityloc, 20, 0.5, 0.5, 0.5, 0.0);
-        entityloc.getWorld().playSound(entityloc, Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 1, 5);
+    protected void swordEffect(Location entityLoc) {
+        Objects.requireNonNull(entityLoc.getWorld())
+                .spawnParticle(Particle.SOUL, entityLoc, 25, 0.5, 0.5, 0.5, 0.0);
+        entityLoc.getWorld().playSound(entityLoc, Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 1, 5);
     }
 
     @EventHandler()
@@ -66,7 +64,7 @@ public class EnderrideSwordListener implements Listener {
 
     private void warpPlayerToBlock(@NotNull Player player) {
         if (player.isSneaking()) {
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()
+            if (Objects.requireNonNull(player.getInventory().getItemInMainHand().getItemMeta()).hasCustomModelData()
                     && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 10015) {
                 if (main.charges.get(player) < 100) {
                     player.sendMessage("§cDu hast nicht genug Charges!");
@@ -88,7 +86,7 @@ public class EnderrideSwordListener implements Listener {
     }
 
     private void warpPlayerToTarget(@NotNull Player player) {
-        if (player.getInventory().getItemInMainHand().hasItemMeta() && player.getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()
+        if (player.getInventory().getItemInMainHand().hasItemMeta() && Objects.requireNonNull(player.getInventory().getItemInMainHand().getItemMeta()).hasCustomModelData()
                 && player.getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 10015) {
             if (main.charges.get(player) < 10) {
                 player.sendMessage("§cDu hast nicht genug Charges um dich zu teleportieren!");

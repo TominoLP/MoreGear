@@ -9,8 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +32,6 @@ public class EnderrideHoeListener implements Listener {
                 return;
             }
 
-
             if (Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.GRASS_BLOCK)
                     || event.getClickedBlock().getType().equals(Material.DIRT)
                     || event.getClickedBlock().getType().equals(Material.FARMLAND)) {
@@ -46,7 +43,7 @@ public class EnderrideHoeListener implements Listener {
 
                 for (int x = -1; x < 2; x++) {
                     for (int z = -1; z < 2; z++) {
-                        Block block1 = location.getWorld().getBlockAt(location.getBlockX() + x, location.getBlockY(), location.getBlockZ() + z);
+                        Block block1 = Objects.requireNonNull(location.getWorld()).getBlockAt(location.getBlockX() + x, location.getBlockY(), location.getBlockZ() + z);
                         if (block1.getType().equals(Material.GRASS_BLOCK) || block1.getType().equals(Material.DIRT)
                                 || block1.getType().equals(Material.FARMLAND) & !block1.getRelative(0, 1, 0).getType().equals(Material.AIR)) {
                             blocks.add(block1);
@@ -70,13 +67,9 @@ public class EnderrideHoeListener implements Listener {
                         b.getRelative(0, 1, 0).setType(Material.AIR);
                         b.getDrops().forEach(itemStack -> b.getWorld().dropItemNaturally(b.getLocation(), itemStack));
                     }
-
                 }
-
             }
-
         }
-
     }
 
 }
