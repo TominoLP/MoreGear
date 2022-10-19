@@ -32,13 +32,13 @@ public final class MoreGear extends JavaPlugin {
 
         Objects.requireNonNull(this.getCommand("test")).setExecutor(new TestCommand());
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("Moregear")), () ->
+        Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("MoreGear")), () ->
                 this.fillSetPlayers.forEach(player -> {
                     player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 7, 0.5, 0.5, 0.5, 0.1);
                     player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, player.getLocation(), 10, 0.5, 0.5, 0.5, 0.2);
                 }), 20, 5);
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("Moregear")), () ->
+        Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("MoreGear")), () ->
                 this.charges.forEach((player, aLong) -> {
                     this.playersWithTool.forEach(target -> {
                         target.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(this.generateChargeDisplayString(aLong)));

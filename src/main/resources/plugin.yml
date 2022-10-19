@@ -1,10 +1,10 @@
-name: Moregear
+name: MoreGear
 version: '${project.version}'
-main: de.tomino.moregear.Moregear
+main: de.tomino.moregear.MoreGear
 api-version: 1.19
 authors: [ Tomino_LP ]
 description: A Plugin that adds more gear to th game
-website: github.com/TominoLP/Moregear
+website: github.com/TominoLP/MoreGear
 commands:
   test:
 

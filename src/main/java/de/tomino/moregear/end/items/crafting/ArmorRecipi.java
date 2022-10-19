@@ -16,7 +16,7 @@ public class ArmorRecipi {
     ItemStack ingot = Enderride.EnderrideIngot();
 
 
-    SmithingRecipe recipe = new SmithingRecipe(new NamespacedKey(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("Moregear")), "test"),
+    SmithingRecipe recipe = new SmithingRecipe(new NamespacedKey(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("MoreGear")), "test"),
             new ItemStack(Material.NETHERITE_PICKAXE),
             new RecipeChoice.MaterialChoice(Material.NETHERITE_HELMET),
             new RecipeChoice.MaterialChoice(Material.BLUE_ICE));
