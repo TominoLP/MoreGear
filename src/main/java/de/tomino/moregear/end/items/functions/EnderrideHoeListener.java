@@ -1,6 +1,6 @@
 package de.tomino.moregear.end.items.functions;
 
-import de.tomino.moregear.Moregear;
+import de.tomino.moregear.MoreGear;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,11 +18,9 @@ import java.util.Objects;
 
 public class EnderrideHoeListener implements Listener {
 
+    private final MoreGear main;
 
-    private final Moregear main;
-
-
-    public EnderrideHoeListener(Moregear main) {
+    public EnderrideHoeListener(MoreGear main) {
         this.main = main;
     }
 

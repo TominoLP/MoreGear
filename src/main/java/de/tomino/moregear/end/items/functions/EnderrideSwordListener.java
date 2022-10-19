@@ -1,6 +1,6 @@
 package de.tomino.moregear.end.items.functions;
 
-import de.tomino.moregear.Moregear;
+import de.tomino.moregear.MoreGear;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -20,9 +20,9 @@ import org.jetbrains.annotations.NotNull;
 public class EnderrideSwordListener implements Listener {
 
 
-    private final Moregear main;
+    private final MoreGear main;
 
-    public EnderrideSwordListener(Moregear main) {
+    public EnderrideSwordListener(MoreGear main) {
         this.main = main;
     }
 

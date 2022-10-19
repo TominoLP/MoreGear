@@ -1,6 +1,6 @@
 package de.tomino.moregear.end.items.functions;
 
-import de.tomino.moregear.Moregear;
+import de.tomino.moregear.MoreGear;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -12,9 +12,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnderrideAxtListener implements Listener {
 
-    private final Moregear main;
+    private final MoreGear main;
 
-    public EnderrideAxtListener(Moregear main) {
+    public EnderrideAxtListener(MoreGear main) {
         this.main = main;
     }
     @EventHandler(ignoreCancelled = true)

@@ -1,6 +1,6 @@
 package de.tomino.moregear.end.items.functions;
 
-import de.tomino.moregear.Moregear;
+import de.tomino.moregear.MoreGear;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -14,9 +14,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnderridePickaxeListener implements Listener {
 
-    private final Moregear main;
+    private final MoreGear main;
 
-    public EnderridePickaxeListener(Moregear main) {
+    public EnderridePickaxeListener(MoreGear main) {
         this.main = main;
     }
 

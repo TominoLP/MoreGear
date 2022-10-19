@@ -1,8 +1,6 @@
 package de.tomino.moregear;
 
-import de.tomino.moregear.end.items.crafting.ArmorRecipi;
 import de.tomino.moregear.end.items.functions.*;
-import de.tomino.moregear.end.lootpools.ChestLootPools;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -15,24 +13,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public final class Moregear extends JavaPlugin {
+public final class MoreGear extends JavaPlugin {
 
     public final HashMap<Player, Long> charges = new HashMap<>();
     private final List<Player> fillSetPlayers = new ArrayList<>();
-    private final List<Player> playerWithSword = new ArrayList<>();
+    private final List<Player> playersWithTool = new ArrayList<>();
 
     @Override
     public void onEnable() {
-
-        ArmorRecipi armorRecipi = new ArmorRecipi();
-        armorRecipi.registerRecipes();
 
         this.getServer().getPluginManager().registerEvents(new EnderrideArmorListener(this), this);
         this.getServer().getPluginManager().registerEvents(new EnderrideSwordListener(this), this);
         this.getServer().getPluginManager().registerEvents(new EnderridePickaxeListener(this), this);
         this.getServer().getPluginManager().registerEvents(new EnderrideAxtListener(this), this);
         this.getServer().getPluginManager().registerEvents(new EnderrideHoeListener(this), this);
-        this.getServer().getPluginManager().registerEvents(new ChestLootPools(), this);
+        this.getServer().getPluginManager().registerEvents(new ToolListener(this), this);
+
 
         Objects.requireNonNull(this.getCommand("test")).setExecutor(new TestCommand());
 
@@ -44,7 +40,7 @@ public final class Moregear extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("Moregear")), () ->
                 this.charges.forEach((player, aLong) -> {
-                    this.playerWithSword.forEach(target -> {;
+                    this.playersWithTool.forEach(target -> {
                         target.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(this.generateChargeDisplayString(aLong)));
                     });
                     if (aLong < 100) this.charges.put(player, aLong + 1);
@@ -65,7 +61,7 @@ public final class Moregear extends JavaPlugin {
         return fillSetPlayers;
     }
 
-    public List<Player> getPlayerWithSword() {
-        return playerWithSword;
+    public List<Player> getPlayersWithTool() {
+        return playersWithTool;
     }
 }

@@ -1,7 +1,7 @@
 package de.tomino.moregear.end.items.functions;
 
-//import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
-import de.tomino.moregear.Moregear;
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import de.tomino.moregear.MoreGear;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,14 +14,9 @@ import java.util.List;
 
 public class EnderrideArmorListener implements Listener {
 
-    //Helmet 10001
-    //Chestplate 10002
-    //Leggins 10003
-    //Boots 10004
+    private final MoreGear main;
 
-    private final Moregear main;
-
-    public EnderrideArmorListener(Moregear main) {
+    public EnderrideArmorListener(MoreGear main) {
         this.main = main;
     }
 
