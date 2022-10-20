@@ -22,6 +22,8 @@ public class TestCommand implements CommandExecutor {
         player.getInventory().addItem(Enderride.EnderrideChest());
         player.getInventory().addItem(Enderride.EnderrideSword());
         player.getInventory().addItem(Enderride.EnderrideHoe());
+        player.getInventory().addItem(Enderride.EnderrideShovel());
+        player.getInventory().addItem(Enderride.EnderrideIngot());
         return false;
     }
 }

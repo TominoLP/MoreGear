@@ -1,5 +1,6 @@
 package de.tomino.moregear;
 
+import de.tomino.moregear.end.items.crafting.CustomSmitingTable;
 import de.tomino.moregear.end.items.functions.*;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -28,9 +29,11 @@ public final class MoreGear extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new EnderrideAxtListener(this), this);
         this.getServer().getPluginManager().registerEvents(new EnderrideHoeListener(this), this);
         this.getServer().getPluginManager().registerEvents(new ToolListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new CustomSmitingTable(), this);
 
 
         Objects.requireNonNull(this.getCommand("test")).setExecutor(new TestCommand());
+
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("MoreGear")), () ->
                 this.fillSetPlayers.forEach(player -> {
