@@ -1,6 +1,7 @@
 package de.tomino.moregear.end.items.crafting;
 
 import de.tomino.moregear.utils.ItemBuilder;
+import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,15 +9,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.SmithingInventory;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class CustomSmitingTable implements Listener {
 
+    Boolean crafteble = false;
+    ItemStack first;
+    ItemStack second;
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onInventoryOpen(InventoryOpenEvent event) {
         if (event.getInventory() instanceof SmithingInventory) {
@@ -70,21 +74,41 @@ public class CustomSmitingTable implements Listener {
     }
     @EventHandler(ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
-
         if (event.getView().getTitle().equals("§6Custom Smiting Table")) {
-            if (!(event.getSlot() == 10 || event.getSlot() == 12 || event.getSlot() == 16)) event.setCancelled(true);
-            if (event.getSlot() == 10) {
-                ItemStack item = event.getInventory().getItem(10);
-                if (item == null) return;
-                if (item.getType() == Material.AIR) return;
+            ItemStack clickedItem = event.getCurrentItem();
+
+            if (event.getSlot() == 10 || event.getSlot() == 12) {
+                if (event.getInventory().getItem(10) == null || event.getInventory().getItem(12) == null) return;
+                if (event.getInventory().getItem(10).getType().equals(Material.AIR)
+                        || event.getInventory().getItem(12).getType().equals(Material.AIR)) return;
+                first = event.getInventory().getItem(10);
+                second = event.getInventory().getItem(12);
+                isCraftable(first, second, (Player) event.getWhoClicked());
             }
+            if (event.getCurrentItem().getType().equals(Material.GRAY_STAINED_GLASS_PANE) || event.getCurrentItem().getType().equals(Material.RED_STAINED_GLASS_PANE) || event.getCurrentItem().getType().equals(Material.GREEN_STAINED_GLASS_PANE) || event.getCurrentItem().getType().equals(Material.PLAYER_HEAD)) {
+                event.setCancelled(true);
+            }
+
         }
+    }
+
+    public void isCraftable(ItemStack first, ItemStack second, Player player) {
+        Bukkit.recipeIterator().forEachRemaining(recipe -> {
+            if (recipe instanceof SmithingRecipe) {
+
+                SmithingRecipe smithingRecipe = (SmithingRecipe) recipe;
+                if (smithingRecipe.getBase().equals(first) && smithingRecipe.getAddition().equals(second)) {
+                    ItemStack result = smithingRecipe.getResult();
+                    player.sendMessage(first.getType().toString() + " 2:" + second.getType().toString());
+                    player.sendMessage("Result: " + result.getType());
+                    crafteble = true;
 
 
 
+                }
+            }
 
-
-
+        });
 
 
 
